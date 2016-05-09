@@ -3,16 +3,66 @@
 		<script src="js/mail-generator.js"></script>
 		<link href="css/style.css" rel="stylesheet" media="screen">
     <script>
-      window.onload = function(){
-        // ALL OF YOUR JAVASCRIPT CODE SHOULD GO HERE. 
-        // We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser
+	window.onload = function(){
+		var count = 1;
+		function addMessage(message){
+
+			var table = document.getElementById("emailData");
+			var row = table.insertRow(0);
+			var sender = row.insertCell(0);
+			var subject = row.insertCell(1);
+			var date = row.insertCell(2);
+			
+			sender.innerHTML = message.sender;
+			subject.innerHTML = message.subject;
+			date.innerHTML = message.date;
+			
+			row.onclick = (function() {
+				return function() {
+				window.alert("From: " + message.sender + "Subject: " + message.subject + " " +message.body);
+				}
+			};
+			
+			document.getElementById("emailCount").innerHTML ="Inbox: " + count;
+		
+		
+		for (var i = 0; i < 1; i++){
+			var message = geemails[i];
+			addMessage(message);
+		}
+		
+		
+		setInterval(function(){ 
+			if(incomingMessages === 1){
+				var newMail = getNewMessage();
+				count++; 
+				addMessage(newMail);
+			}
+		};
+		var incomingMessages = 1;
+	function stopIncomingMessages(){
+		if(incomingMessages == 1){
+			incomingMessages = 0;
+			document.getElementById("stopIncomingMessages").style.background = "white";
+		}
+		else{
+			incomingMessages = 1;
+			document.getElementById("stopIncomingMessages").style.background = "white";
+		}
         
       };
+      loadMessages(geemails);
     </script>
 	</head>
+	<title> MAIL </title>
 	<body>
-		<div class="container" id="main">
-			Build Me!
-		</div>
+	<table Align = "Center">
+		<tr>
+			<td id="emailCount" type="button" onclick="window.close()"></td>
+		</tr>
+	</table>
+	<table Align = "Center" id ="emailData" >
+	</table>
+		
 	</body>
 </html>

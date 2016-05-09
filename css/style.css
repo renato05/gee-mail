@@ -1,0 +1,24 @@
+{
+  background-image: url(http://bluewallpaperbackground.weebly.com/uploads/1/9/7/6/19768865/2324599_orig.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: #black;
+}
+tr:hover{
+  color: white;
+}
+tr:active{
+  color: white;
+}
+{
+	position: fixed;
+	bottom:0px;
+	right:0px;
+}
+{
+  position: fixed;
+  bottom:0px;
+  left:0px;
+}
