@@ -7,6 +7,24 @@
 		var count = 1;
 		function addMessage(message){
 
+			
+	var incomingMessages = 1;
+	function stopIncomingMessages(){
+		if(incomingMessages == 1){
+			incomingMessages = 0;
+			document.getElementById("stopIncomingMessages").style.background = "white";
+		}
+		else{
+			incomingMessages = 1;
+			document.getElementById("stopIncomingMessages").style.background = "";
+		}
+	}
+
+	}
+	window.onload = function(){
+		var count = 1;
+		function addMessage(message){
+
 			var table = document.getElementById("emailData");
 			var row = table.insertRow(0);
 			var sender = row.insertCell(0);
@@ -19,14 +37,14 @@
 			
 			row.onclick = (function() {
 				return function() {
-				window.alert("From: " + message.sender + "Subject: " + message.subject + " " +message.body);
+				window.alert("From: " + message.sender + "\nSubject: " + message.subject + "\n\n" +message.body);
 				}
-			};
+			})();
 			
 			document.getElementById("emailCount").innerHTML ="Inbox: " + count;
+		}
 		
-		
-		for (var i = 0; i < 1; i++){
+		for (var i = 0; i < 10; i++){
 			var message = geemails[i];
 			addMessage(message);
 		}
@@ -38,24 +56,14 @@
 				count++; 
 				addMessage(newMail);
 			}
-		};
-		var incomingMessages = 1;
-	function stopIncomingMessages(){
-		if(incomingMessages == 1){
-			incomingMessages = 0;
-			document.getElementById("stopIncomingMessages").style.background = "white";
-		}
-		else{
-			incomingMessages = 1;
-			document.getElementById("stopIncomingMessages").style.background = "white";
-		}
-        
-      };
-      loadMessages(geemails);
+		}, 4200);
+	};
     </script>
 	</head>
 	<title> MAIL </title>
 	<body>
+	<button id="stopIncomingMessages" type="button" onclick="stopIncomingMessages()" >Stop Incoming Messages</button>
+	<button id="" type="button" onclick="()"></button>
 	<table Align = "Center">
 		<tr>
 			<td id="emailCount" type="button" onclick="window.close()"></td>
